@@ -1,0 +1,52 @@
+{
+  "name": "rabbit-lite",
+  "version": "0.1.0",
+  "description": "Opinionated, clean and simple interface for using RabbitMQ",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "scripts": {
+    "start": "tsc && node ./dist/index.js",
+    "test": "tsc && mocha --recursive ./dist/**/*.spec.js --exit",
+    "build": "tsc",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SirSaar/rabbit-lite.git"
+  },
+  "keywords": [
+    "RabbitMQ",
+    "MQ",
+    "Message",
+    "Queue",
+    "amqp",
+    "amqplib",
+    "publish",
+    "subscribe"
+  ],
+  "author": "Saar Mornel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SirSaar/rabbit-lite/issues"
+  },
+  "homepage": "https://github.com/SirSaar/rabbit-lite#readme",
+  "devDependencies": {
+    "@types/amqplib": "^0.5.8",
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "@types/mock-fs": "^3.6.30",
+    "@types/node": "^10.9.2",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "mock-fs": "^4.6.0",
+    "nyc": "^12.0.2",
+    "standard-version": "^4.4.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.10.0",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.2"
+  }
+}
