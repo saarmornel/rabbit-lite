@@ -29,9 +29,10 @@ export async function assertExchange (
     const _options: amqp.Options.AssertExchange = { ...defaultOptions, ...options };
     let channel;
     if (consumeConnection) channel = await createChannel(consumeConnection);
-    else channel = await createChannel(publishConnection);
+    else if (publishConnection) channel = await createChannel(publishConnection);
+    else throw "no connection available";
     channel.assertExchange(exchange, type, options);
-    channel.close();
+    // channel.close();
 }
 
 export async function connect(select?: string): Promise<void> {
@@ -68,7 +69,7 @@ async function createChannel(connection: amqp.Connection) {
 }
 
 export async function subscribe(queue: string, bindings: IBinding | IBinding[],
-                                messageHandler: (message: string) => any,
+                                messageHandler: (message: string | Object) => any,
                                 options?: ISubscribeOptions ,
     ) {
     const defaultOptions: ISubscribeOptions = 
@@ -111,7 +112,7 @@ export function publish(exchange: string, routingKey: string, message: string | 
 }
 
 export function closeConnection() {
-    console.log('[RabbitMQ] Connection closed');
+    console.log('[RabbitMQ] Connections closed');
     if (publishConnection) publishConnection.close();
     if (consumeConnection) consumeConnection.close();
 }
